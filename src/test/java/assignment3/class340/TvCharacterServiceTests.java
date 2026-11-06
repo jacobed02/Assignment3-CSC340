@@ -61,4 +61,19 @@ class TvCharacterServiceTests {
         assertNull(created.getCharacterId());
         verify(repository).save(input);
     }
+
+    @Test
+    void updateCopiesImageUrlOntoExistingCharacter() {
+        TvCharacter existing = new TvCharacter("SpongeBob", "A fry cook", "SpongeBob", "Sponge");
+        existing.setCharacterId(7L);
+        TvCharacter changes = new TvCharacter("SpongeBob", "A fry cook", "SpongeBob", "Sponge");
+        changes.setImageUrl("https://example.com/spongebob.jpg");
+        when(repository.findById(7L)).thenReturn(Optional.of(existing));
+        when(repository.save(existing)).thenReturn(existing);
+
+        TvCharacter updated = service.update(7L, changes);
+
+        assertEquals("https://example.com/spongebob.jpg", updated.getImageUrl());
+        verify(repository).save(existing);
+    }
 }

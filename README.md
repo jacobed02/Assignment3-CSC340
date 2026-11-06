@@ -1,6 +1,6 @@
-# Marvel Character API
+# SpongeBob Character Gallery
 
-A layered Spring Boot REST API for creating and managing Marvel characters. Character records are stored in PostgreSQL using Spring Data JPA.
+A Spring Boot application for browsing and managing SpongeBob SquarePants characters. Character records are stored in PostgreSQL using Spring Data JPA. The app provides both a REST API and a server-rendered FreeMarker site.
 
 ## Character attributes
 
@@ -11,6 +11,7 @@ A layered Spring Boot REST API for creating and managing Marvel characters. Char
 | `description` | `String` | Required; cannot be blank; maximum 2000 characters |
 | `universe` | `String` | Required; cannot be blank |
 | `species` | `String` | Required; cannot be blank |
+| `imageUrl` | `String` | Optional; URL of a character image |
 
 ## API
 
@@ -18,13 +19,13 @@ Base path: `/api/characters`
 
 | Method | Path | Description | Success status |
 |---|---|---|---|
-| GET | `/api/characters` | List all characters; optionally filter with `?universe=Marvel` or search with `?name=spider` (both may be combined) | 200 |
+| GET | `/api/characters` | List all characters; optionally filter with `?universe=SpongeBob%20SquarePants` or search with `?name=sponge` (both may be combined) | 200 |
 | GET | `/api/characters/{id}` | Get one character by ID | 200 |
 | POST | `/api/characters` | Create a character | 201 |
 | PUT | `/api/characters/{id}` | Replace a character's editable fields | 200 |
 | DELETE | `/api/characters/{id}` | Delete a character | 204 |
-| GET | `/api/characters?universe=Marvel` | Filter characters by universe (case-insensitive) | 200 |
-| GET | `/api/characters?name=spider` | Search names by partial, case-insensitive match | 200 |
+| GET | `/api/characters?universe=SpongeBob%20SquarePants` | Filter characters by universe (case-insensitive) | 200 |
+| GET | `/api/characters?name=sponge` | Search names by partial, case-insensitive match | 200 |
 
 Requests for unknown IDs return `404`. POST and PUT requests with a missing or blank `name`, `description`, `universe`, or `species` return `400`.
 
@@ -32,28 +33,37 @@ Example request body for POST and PUT:
 
 ```json
 {
-  "name": "Spider-Man",
-  "description": "A friendly neighborhood superhero.",
-  "universe": "Marvel",
-  "species": "Human"
+  "name": "SpongeBob",
+  "description": "A cheerful fry cook.",
+  "universe": "SpongeBob SquarePants",
+  "species": "Sponge",
+  "imageUrl": "https://example.com/character.jpg"
 }
 ```
 
+## Web pages
+
+| Route | Description |
+|---|---|
+| `/` | Character gallery with name search and universe filter |
+| `/characters/{id}` | Character details with edit and delete actions |
+| `/characters/new` | Add a character |
+| `/characters/{id}/edit` | Edit a character |
+| `/about` | About the gallery and its architecture |
+
+The shared page layout provides Home, About, and Add a Character navigation. Missing character images use a local placeholder.
+
 ## Run locally
 
-Install JDK 25, then set `SPRING_DATASOURCE_URL` to your PostgreSQL JDBC connection URL in the same PowerShell session used to start the app:
-
 ```powershell
-$env:SPRING_DATASOURCE_URL = "jdbc:postgresql://<host>/<database>?user=<username>&password=<password>&sslmode=require"
+$env:SPRING_DATASOURCE_URL = "jdbc:postgresql://ep-solitary-cloud-b8fgpqus-pooler.c-14.us-east-1.aws.neon.tech/neondb?user=&password=&sslmode=require&channelBinding=require"
 .\mvnw.cmd spring-boot:run
 ```
 
-The app listens on port `8080` by default, or uses the `PORT` environment variable when set. Hibernate updates the database schema automatically.
+The app listens on port `8080` by default, or uses the `PORT` environment variable when set.
 
 ## Docker and Render
 
-The root `Dockerfile` builds the application with the Maven wrapper and runs it on a Java 25 JRE image. Set `SPRING_DATASOURCE_URL` in the Render service's environment settings; do not commit database credentials.
 
-**Render API URL:** Deployment pending. After deploying, replace this line with the service URL, for example `https://<your-service>.onrender.com/api/characters`.
+**Live home page:** (https://assignment3-csc340.onrender.com)
 
-Render's free service may sleep when idle, so the first request after inactivity can take up to a minute.

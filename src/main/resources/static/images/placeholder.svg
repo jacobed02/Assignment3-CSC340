@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">Underwater character placeholder</title>
+  <rect width="640" height="420" fill="#d7eff3"/>
+  <path d="M0 300c90-35 155 32 245 0s155-32 245 0 100 8 150-8v128H0z" fill="#b9e4e6"/>
+  <circle cx="320" cy="170" r="72" fill="#fff" opacity=".8"/>
+  <path d="M305 186c15 15 34 15 49 0" fill="none" stroke="#087e9d" stroke-linecap="round" stroke-width="8"/>
+  <circle cx="299" cy="157" r="7" fill="#087e9d"/>
+  <circle cx="346" cy="157" r="7" fill="#087e9d"/>
+  <text x="320" y="350" fill="#123047" font-family="Arial,sans-serif" font-size="24" text-anchor="middle">Image coming soon</text>
+</svg>

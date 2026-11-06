@@ -1,4 +1,4 @@
-package assignment3.class340.controller;
+package assignment3.class340.controller.character;
 
 import assignment3.class340.entity.TvCharacter;
 import assignment3.class340.service.TvCharacterService;

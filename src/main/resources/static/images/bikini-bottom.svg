@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="title">
+  <title id="title">Illustration of an underwater town</title>
+  <rect width="900" height="420" fill="#a8e8ee"/>
+  <path d="M0 330c120-38 210 35 340 0s235-26 340 0 150 8 220-12v102H0z" fill="#e8d49b"/>
+  <path d="M130 286V170l85-45 85 45v116z" fill="#f3a652"/>
+  <path d="M158 196h42v47h-42zM231 196h42v47h-42z" fill="#d9f7f8"/>
+  <path d="M400 290V135h140v155z" fill="#b76a55"/>
+  <path d="M385 137l85-63 85 63z" fill="#8f4c45"/>
+  <circle cx="470" cy="205" r="36" fill="#d9f7f8"/>
+  <path d="M670 286V174l62-35 62 35v112z" fill="#a27bd0"/>
+  <circle cx="701" cy="208" r="15" fill="#d9f7f8"/>
+  <circle cx="755" cy="208" r="15" fill="#d9f7f8"/>
+  <path d="M70 285q18-80 36 0m664 10q16-68 32 0m45-4q14-56 28 0" fill="none" stroke="#177f8d" stroke-linecap="round" stroke-width="10"/>
+  <circle cx="350" cy="82" r="9" fill="#fff" opacity=".7"/>
+  <circle cx="365" cy="52" r="5" fill="#fff" opacity=".7"/>
+  <circle cx="600" cy="98" r="7" fill="#fff" opacity=".7"/>
+</svg>
